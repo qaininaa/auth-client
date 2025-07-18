@@ -18,7 +18,6 @@ const RequireAuth = ({ allowedRoles }) => {
     }
   }, [auth, navigate, location]);
 
-  // Jika belum ada auth.role, render kosong agar tidak sempat render ForbiddenPage
   if (!auth?.role) {
     return null;
   }

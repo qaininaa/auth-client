@@ -14,10 +14,9 @@ const Products = () => {
         const response = await axios.get("/products", {
           signal: controller.signal,
         });
-        console.log("ini resp", response);
         mounted && setProducts(response.data.data);
       } catch (error) {
-        console.error(error);
+        throw new Error(error);
       }
     };
     fetchData();

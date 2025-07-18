@@ -23,20 +23,11 @@ const useAxiosInstance = () => {
       (response) => response,
       async (error) => {
         const prevRequest = error?.config;
-        console.log("📛 Error status:", error.response?.status);
-        console.log("📦 SENT?", prevRequest.sent);
 
         if (error?.response?.status === 403 && !prevRequest.sent) {
           prevRequest.sent = true;
           const newAccessToken = await refresh();
-          console.log(newAccessToken);
-
           prevRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-          console.log(
-            "🛂 Header Authorization setelah refresh:",
-            prevRequest.headers.Authorization
-          );
-
           return axiosInstance(prevRequest);
         }
         return Promise.reject(error);
