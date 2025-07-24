@@ -1,5 +1,5 @@
 import Products from "../components/Products";
-import useRefreshToken from "../hooks/useRefreshToken";
+import useRefreshToken from "../hooks/yes";
 
 const AdminPage = () => {
   const refresh = useRefreshToken();
